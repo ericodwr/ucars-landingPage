@@ -1,25 +1,51 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
 
-function App() {
+import Box from '@mui/material/Box';
+import Container from '@mui/material/Container';
+
+import Navbar from './components/Navbar';
+
+import TopFooter from './components/TopFooter';
+
+import {
+  Cars,
+  Features,
+  Home,
+  Products,
+  Questions,
+  About,
+  Footer,
+} from './pages/index';
+import HomeMobile from './pages/Mobile/HomeMobile';
+import NavBottom from './components/mobile/NavBottom';
+import NavTop from './components/mobile/NavTop';
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {/* Big Screen */}
+      <Box sx={{ display: { xs: 'none', xl: 'block' } }}>
+        <TopFooter />
+        <Navbar />
+        <Home />
+        <Cars />
+        <Products />
+        <Features />
+        <Questions />
+        <About />
+        <Footer />
+      </Box>
+
+      {/* Small Screen */}
+      <Box sx={{ display: { xs: 'block', xl: 'none' } }}>
+        <NavTop />
+        <Container maxWidth="lg">
+          <HomeMobile />
+        </Container>
+        <NavBottom />
+      </Box>
+    </>
   );
-}
+};
 
 export default App;
